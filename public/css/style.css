@@ -1,0 +1,121 @@
+@charset "UTF-8";
+
+/* 全般 */
+body{
+    font-size: 62.5%;
+}
+
+#app{
+    font-size: 14px;
+}
+ul,li,table,thead,th,a{
+    padding: 0%;
+    margin: 0%;
+}
+
+
+.card__title{
+    text-align: left; 
+    font-size: 1.4rem;
+}
+
+.list-blk{
+    width: 100%;
+    border: 1px solid #dee2e6;
+}
+
+.form{
+    padding: 4%;
+}
+
+.row{
+    justify-content:flex-start;
+}
+
+.mb-0{
+    margin-top: 15%;
+}
+
+.offset-md-4{
+    margin-left: 18%;
+}
+
+.col-form-label{
+    font-size: 0.9rem;
+    padding-right: 80px;
+}
+
+/* 一覧画面 */
+.search-blk{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    width: 100%;
+    margin-left: 0;
+}
+
+.search-item{
+    width: 35%;
+}
+
+.search-btn{
+    width: 15%;
+    border: 1px solid #dee2e6;
+}
+
+.list-blk{
+    margin-bottom: 20px;
+}
+
+.list-title{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.list-title__text{
+    width: 14%;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.list-title__btn{
+    text-align: center;
+    padding: 10px 0;
+}
+
+.list-content__text{
+    text-align: center;
+    padding: 15px 0;
+}
+
+.list-content tr:nth-child(odd){
+	background: #dee2e6;
+}
+
+.page{
+    width: fit-content;
+    margin: auto;
+    font-size: 14px;
+}
+
+.page li{
+    display: inline-block;
+    width: 25px;
+    border: 1px solid #dee2e6;
+    list-style: none;
+    text-align: center;
+}
+
+.page a{
+    text-decoration: none;
+    color: #000;
+}
+
+/* 新規登録画面 */
+.file-upload{
+    display: inline-block;
+    width: 60%;
+    height: 30px;
+    background-color: #dee2e6;
+    font-size: 0.9rem;
+}
