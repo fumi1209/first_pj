@@ -66,7 +66,13 @@
                             <label for="stock" class="col-md-4 col-form-label text-md-end">在庫数&ast;</label> 
 
                             <div class="col-md-6">
-                                <input id="stock" type="text" class="form-control" name="stock" value="{{ $edit -> stock }}" >
+                                <input id="stock" type="text" class="form-control @error('stock') is-invalid @enderror" name="stock" value="{{ $edit -> stock }}" >
+
+                                @error('stock')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -89,7 +95,7 @@
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary1">更新</button>
-                                <a href="http://localhost/first_pj/public/product/detail/{{ $edit->id }}"  class="btn btn-primary2">戻る</a>
+                                <a href="{{ route('showDetail',$edit -> id) }}" class="btn btn-primary2">戻る</a>
                             </div>
                         </div>
                     </form>

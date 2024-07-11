@@ -6,6 +6,8 @@ use App\Models\Product;
 use App\Models\Company;
 use Illuminate\Http\Request;  //データの取得やバリデーションなど、アプリケーション内でリクエストを処理する際に使用
 use App\Http\Requests\ProductRequest;
+use App\Http\Requests\ArticleRequest;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -44,7 +46,14 @@ class ProductController extends Controller
     }
     // (新規登録)
     public function exeStore(ProductRequest $request){  //リクエストオブジェクトをリクエスト変数に代入(代入時にバリデーションチェックを実施している)
-        $store = $this -> product -> store($request);
+        DB::beginTransaction(); //トランザクション処理を開始する指示
+
+        try{
+            $store = $this -> product -> store($request);
+            DB::commit(); //トランザクション処理を終了する指示(変更を確定する)
+        } catch(\Exception $e){
+            DB::rollback(); //トランザクション処理を終了する指示(変更を確定せず取り消しにする)
+        }
         return redirect(route('createRegister'));
     }
 
@@ -57,13 +66,29 @@ class ProductController extends Controller
 
     //(編集内容登録)
     public function exeUpdata(ProductRequest $request, $id){
-        $updata = $this -> product -> updata($request,$id); //updataクラスを実行し、返り値をupdata変数に代入
-        return redirect(route('showEdit',[ 'id' => $updata -> id])); //updata変数のidカラムをidパラメータにする
+
+        DB::beginTransaction(); 
+
+        try{
+            $updata = $this -> product -> updata($request,$id); //updataクラスを実行し、返り値をupdata変数に代入
+            DB::commit();
+        } catch(\Exception $e){
+            DB::rollback(); 
+        }
+        return redirect(route('showEdit',[ 'id' => $id])); //updata変数のidカラムをidパラメータにする
     }
     
     //(削除)
     public function exeDelete($id){
-        $delete = $this -> product -> deleteData($id);
+
+        DB::beginTransaction(); 
+
+        try{
+            $delete = $this -> product -> deleteData($id);
+            DB::commit();
+        } catch(\Exception $e){
+            DB::rollback(); 
+        }
         return redirect(route('productList'));
     }
 

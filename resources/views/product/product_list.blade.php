@@ -48,7 +48,7 @@
                             <td class="list-content__text">{{ $list -> price }}</td>
                             <td class="list-content__text">{{ $list -> stock }}</td>
                             <td class="list-content__text">{{ $list -> company -> company_name }}</td>
-                            <td class="list-content__text"><a class="btn btn-primary1" href="http://localhost/first_pj/public/product/detail/{{ $list->id }}">詳細</a></td>
+                            <td class="list-content__text"><a class="btn btn-primary1" href="{{ route('showDetail',$list -> id) }}">詳細</a></td>
                             <form method="POST" action="{{ route('delete',$list -> id) }}">
                                 @csrf
                                 @method('DELETE')

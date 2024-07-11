@@ -48,7 +48,7 @@
 
                     <div class="row mb-0">
                         <div class="col-md-8 offset-md-4">
-                            <a href="http://localhost/first_pj/public/product/edit/{{ $detail->id }}" class="btn btn-primary1">編集</a>
+                            <a href="{{ route('showEdit',$detail -> id) }}" class="btn btn-primary1">編集</a>
                             <a href="{{ route('productList') }}" class="btn btn-primary2">戻る</a>
                         </div>
                     </div>
